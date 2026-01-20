@@ -7,13 +7,9 @@ int main()
     cin >> n;
     for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j <= i - 1; j++)
+        for (char j = 'A'; j < 'A' + i + 1; j++)
         {
-            cout << "  ";
-        }
-        for (int j = 0; j < (2 * n) - (2 * i) - 1; j++)
-        {
-            cout << "* ";
+            cout << j << " ";
         }
 
         cout << endl;

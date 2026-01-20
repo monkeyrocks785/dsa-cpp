@@ -5,17 +5,15 @@ int main()
 {
     int n;
     cin >> n;
+    char a = 'A';
     for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j <= i - 1; j++)
+        for (int j = 0; j <= i; j++)
         {
-            cout << "  ";
+            cout << a << " ";
         }
-        for (int j = 0; j < (2 * n) - (2 * i) - 1; j++)
-        {
-            cout << "* ";
-        }
-
+        
+        a++;
         cout << endl;
     }
 
