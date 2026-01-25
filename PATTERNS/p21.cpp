@@ -5,37 +5,17 @@ int main()
 {
     int n;
     cin >> n;
-    int spaces, s;
     for (int i = 0; i < n; i++)
     {
-        if (i % n == 0 || i == n - 1)
+        for (int j = 0; j < n; j++)
         {
-            spaces = 0;
-            s = n;
-        }
-        else
-        {
-            spaces = n - 2;
-            s = 1;
-        }
-
-        for (int j = 0; j < s; j++)
-        {
-            cout << "* ";
-        }
-        for (int j = 0; j < spaces; j++)
-        {
-            cout << "  ";
-        }
-        for (int j = 0; j < s; j++)
-        {
-            if (i % n == 0 || i == n - 1)
+            if (i == 0 || j == 0 || i == n - 1 || j == n - 1)
             {
-                continue;
+                cout << "* ";
             }
             else
             {
-                cout << "* ";
+                cout << "  ";
             }
         }
         cout << endl;
