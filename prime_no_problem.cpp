@@ -7,15 +7,30 @@ int main()
 {
     int n;
     cin >> n;
-
     int cnt = 0;
-    for (int i = 1; i <= n; i++)
+
+    // Approach 1 : Brute Force
+    // for (int i = 1; i <= n; i++)
+    // {
+    //     if (n % i == 0)
+    //     {
+    //         cnt++;
+    //     }
+    // }
+
+    // Approach 2 : Optimal Approach
+    for (int i = 1; i * i < n; i++)
     {
         if (n % i == 0)
         {
             cnt++;
+            if (i != n / i)
+            {
+                cnt++;
+            }
         }
     }
+
     if (cnt == 2)
     {
         cout << "Prime" << endl;
