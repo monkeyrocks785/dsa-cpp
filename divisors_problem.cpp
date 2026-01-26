@@ -9,13 +9,28 @@ int main()
     int n;
     cin >> n;
     vector<int> divisors;
-    for (int i = 1; i <= n; i++)
+    // Approach 1: Brute Force
+    // for (int i = 1; i <= n; i++)
+    // {
+    //     if (n % i == 0)
+    //     {
+    //         divisors.push_back(i);
+    //     }
+    // }
+
+    // Approach 2: Optimized Approach - using a property of divisors as if i is a divisor of n then n/i is also a divisor of n
+    for (int i = 1; i * i < n; i++)
     {
         if (n % i == 0)
         {
             divisors.push_back(i);
         }
+        if (i != n / i)
+        {
+            divisors.push_back(n / i);
+        }
     }
+
     cout << "Divisors of " << n << " are: ";
     for (int div : divisors)
     {
