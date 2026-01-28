@@ -10,8 +10,11 @@ void printN(int n)
         return;
     }
     // Approach 1 : Forward Recusion
-    cout << n << endl;
+    // cout << n << endl;
+    // printN(n - 1);
+    // Approach 2 : Backtracking
     printN(n - 1);
+    cout << n << endl;
 }
 
 int main()
