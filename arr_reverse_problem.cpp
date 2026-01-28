@@ -10,11 +10,30 @@ int main()
     for (int n : arr)
         cout << n << " ";
 
-    // Approach: Built-in Function
     vector<int> a1 = arr;
-    reverse(a1.begin(), a1.end());
+
+    // Approach: Built-in Function
+    // reverse(a1.begin(), a1.end());
+
+    // Approach: Brute Force
+    for (int i = 0; i < arr.size(); i++)
+    {
+        a1[i] = arr[arr.size() - 1 - i];
+    }
+
+    // Approach: Two pointer Technique
+    // int u = 0;
+    // int v = arr.size() - 1;
+    // while (u < v)
+    // {
+    //     swap(a2[u], a2[v]);
+    //     u++;
+    //     v--;
+    // }
+
     cout << "\nReversed array: ";
     for (int n : a1)
         cout << n << " ";
+
     return 0;
 }
