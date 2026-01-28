@@ -5,11 +5,15 @@ using namespace std;
 
 int sumN(int n)
 {
-    if (n == 0)
-    {
-        return 0;
-    }
-    return n + sumN(n - 1);
+    // Approach 1: Brute Force
+    // if (n == 0)
+    // {
+    //     return 0;
+    // }
+    // return n + sumN(n - 1);
+
+    // Approach 2: Using Formula
+    return (n * (n + 1)) / 2;
 }
 
 int main()
