@@ -12,7 +12,7 @@ void display(int arr[], int size)
 
 int main()
 {
-    int arr[5] = {0, 1, 2, 3, 4}; // Initializing all elements to 0
+    int arr[5] = {0, 1, 2, 3, 4};
     int size = sizeof(arr) / sizeof(*arr);
     cout << "Array elements after initialization : " << endl;
     display(arr, size);
