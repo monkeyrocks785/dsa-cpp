@@ -5,23 +5,37 @@ using namespace std;
 
 void freqcount(int arr[], int n)
 {
-    vector<bool> visited(n, false);
+    // Approach : Brute Force
+    // vector<bool> visited(n, false);
+    // for (int i = 0; i < n; i++)
+    // {
+    //     if (visited[i] == true)
+    //     {
+    //         continue;
+    //     }
+    //     int cnt = 0;
+    //     for (int j = 0; j < n; j++)
+    //     {
+    //         if (arr[i] == arr[j])
+    //         {
+    //             visited[j] = true;
+    //             cnt++;
+    //         }
+    //     }
+    //     cout << arr[i] << " -> " << cnt << endl;
+    // }
+
+    // Approach : Optimal i.e. using unorder_map
+    unordered_map<int, int> map;
     for (int i = 0; i < n; i++)
     {
-        if (visited[i] == true)
-        {
-            continue;
-        }
-        int cnt = 0;
-        for (int j = 0; j < n; j++)
-        {
-            if (arr[i] == arr[j])
-            {
-                visited[j] = true;
-                cnt++;
-            }
-        }
-        cout << arr[i] << " -> " << cnt << endl;
+        map[arr[i]]++;
+    }
+
+    // Traversing the map
+    for (auto i : map)
+    {
+        cout << i.first << " -> " << i.second << endl;
     }
 }
 
