@@ -3,25 +3,46 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int secondLargest(int arr[], int n)
+void getEle(int arr[], int n)
 {
-    sort(arr, arr + n);
-    return arr[n - 2];
-}
-
-int secondSmallest(int arr[], int n)
-{
-    sort(arr, arr + n);
-    return arr[1];
+    if (n < 2)
+    {
+        cout << "Not enough elements in the array" << endl;
+        return;
+    }
+    // Approach : Brute Force
+    // sort(arr, arr + n);
+    // int s = arr[1];
+    // int l = arr[n - 2];
+    // cout << "Second Smallest: " << s << " and Second Largest: " << l << endl;
+    
+    // Approach : Optimal
+    int s = INT_MAX, l = INT_MIN;
+    int ss = INT_MAX, sl = INT_MIN;
+    for (int i = 0; i < n; i++)
+    {
+        s = min(s, arr[i]);
+        l = max(l, arr[i]);
+    }
+    
+    for (int i = 0; i < n; i++)
+    {
+        if (arr[i] < ss && arr[i] != s)
+        {
+            ss = arr[i];
+        }
+        if (arr[i] > sl && arr[i] != l)
+        {
+            sl = arr[i];
+        }
+    }
+    cout << "Second Smallest: " << ss << " and Second Largest: " << sl << endl;
 }
 
 int main()
 {
     int arr[5] = {8, 10, 5, 7, 9};
     int n = sizeof(arr) / sizeof(arr[0]);
-    int ss = secondSmallest(arr, n);
-    int sl = secondLargest(arr, n);
-    cout << "Second Smallest: " << ss << endl;
-    cout << "Second Largest: " << sl << endl;
+    getEle(arr, n);
     return 0;
 }
