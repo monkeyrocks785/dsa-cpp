@@ -15,23 +15,56 @@ void getEle(int arr[], int n)
     // int s = arr[1];
     // int l = arr[n - 2];
     // cout << "Second Smallest: " << s << " and Second Largest: " << l << endl;
-    
+
     // Approach : Optimal
-    int s = INT_MAX, l = INT_MIN;
-    int ss = INT_MAX, sl = INT_MIN;
+    // int s = INT_MAX, l = INT_MIN;
+    // int ss = INT_MAX, sl = INT_MIN;
+    // for (int i = 0; i < n; i++)
+    // {
+    //     s = min(s, arr[i]);
+    //     l = max(l, arr[i]);
+    // }
+
+    // for (int i = 0; i < n; i++)
+    // {
+    //     if (arr[i] < ss && arr[i] != s)
+    //     {
+    //         ss = arr[i];
+    //     }
+    //     if (arr[i] > sl && arr[i] != l)
+    //     {
+    //         sl = arr[i];
+    //     }
+    // }
+    // cout << "Second Smallest: " << ss << " and Second Largest: " << sl << endl;
+
+    // Approach : Most Optimal
+    int s = INT_MAX;
+    int ss = INT_MAX;
+    int l = INT_MIN;
+    int sl = INT_MIN;
+
     for (int i = 0; i < n; i++)
     {
-        s = min(s, arr[i]);
-        l = max(l, arr[i]);
-    }
-    
-    for (int i = 0; i < n; i++)
-    {
-        if (arr[i] < ss && arr[i] != s)
+        if (arr[i] < s)
+        {
+            ss = s;
+            s = arr[i];
+        }
+        else if (arr[i] < ss && arr[i] != s)
         {
             ss = arr[i];
         }
-        if (arr[i] > sl && arr[i] != l)
+    }
+
+    for (int i = 0; i < n; i++)
+    {
+        if (arr[i] > l)
+        {
+            sl = l;
+            l = arr[i];
+        }
+        else if (arr[i] > sl && arr[i] != l)
         {
             sl = arr[i];
         }
