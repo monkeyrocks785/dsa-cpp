@@ -6,18 +6,35 @@ using namespace std;
 
 int removeDuplicates(vector<int> &arr)
 {
-    unordered_set<int> s;
-    int i = 0;
-    for (int n : arr)
+    // Approach : BruteForce
+    // unordered_set<int> s;
+    // int i = 0;
+    // for (int n : arr)
+    // {
+    //     if (s.find(n) == s.end())
+    //     {
+    //         s.insert(n);
+    //         arr[i] = n;
+    //         i++;
+    //     }
+    // }
+    // return i;
+
+    // Approach : Optimal
+    if (arr.empty())
     {
-        if (s.find(n) == s.end())
+        return 0;
+    }
+    int i = 0;
+    for (int j = 1; j < arr.size(); j++)
+    {
+        if (arr[j] != arr[i])
         {
-            s.insert(n);
-            arr[i] = n;
             i++;
+            arr[i] = arr[j];
         }
     }
-    return i;
+    return i + 1;
 }
 
 int main()
