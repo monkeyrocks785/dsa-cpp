@@ -5,20 +5,46 @@ using namespace std;
 
 vector<int> moveZeroToEnd(vector<int> &arr, int n)
 {
-    vector<int> temp(n, 0);
-    int index = 0;
+    // Approach : Brute Force
+    // vector<int> temp(n, 0);
+    // int index = 0;
+    // for (int i = 0; i < n; i++)
+    // {
+    //     if (arr[i] != 0)
+    //     {
+    //         temp[index] = arr[i];
+    //         index++;
+    //     }
+    // }
+
+    // for (int i = 0; i < n; i++)
+    // {
+    //     arr[i] = temp[i];
+    // }
+
+    // Approach : Optimal
+    int j = -1;
     for (int i = 0; i < n; i++)
     {
-        if (arr[i] != 0)
+        if (arr[i] == 0)
         {
-            temp[index] = arr[i];
-            index++;
+            j = i;
+            break;
         }
     }
 
-    for (int i = 0; i < n; i++)
+    if (j == -1)
     {
-        arr[i] = temp[i];
+        return arr;
+    }
+
+    for (int i = j + 1; i < n; i++)
+    {
+        if (arr[i] != 0)
+        {
+            swap(arr[i], arr[j]);
+            j++;
+        }
     }
 
     return arr;
