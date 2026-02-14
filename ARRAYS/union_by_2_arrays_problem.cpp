@@ -8,21 +8,36 @@ using namespace std;
 vector<int> unionMaker(int a1[], int a2[], int n, int m)
 {
     // Approach : Using map
+    // map<int, int> freq;
+    // vector<int> uni;
 
-    map<int, int> freq;
+    // for (int i = 0; i < n; i++)
+    // {
+    //     freq[a1[i]]++;
+    // }
+    // for (int i = 0; i < m; i++)
+    // {
+    //     freq[a2[i]]++;
+    // }
+    // for (auto it : freq)
+    // {
+    //     uni.push_back(it.first);
+    // }
+
+    set<int> freq;
     vector<int> uni;
 
     for (int i = 0; i < n; i++)
     {
-        freq[a1[i]]++;
+        freq.insert(a1[i]);
     }
     for (int i = 0; i < m; i++)
     {
-        freq[a2[i]]++;
+        freq.insert(a2[i]);
     }
     for (auto it : freq)
     {
-        uni.push_back(it.first);
+        uni.push_back(it);
     }
 
     return uni;
