@@ -24,20 +24,55 @@ vector<int> unionMaker(int a1[], int a2[], int n, int m)
     //     uni.push_back(it.first);
     // }
 
-    set<int> freq;
-    vector<int> uni;
+    // Approach : Using set
+    // set<int> freq;
+    // vector<int> uni;
 
-    for (int i = 0; i < n; i++)
+    // for (int i = 0; i < n; i++)
+    // {
+    //     freq.insert(a1[i]);
+    // }
+    // for (int i = 0; i < m; i++)
+    // {
+    //     freq.insert(a2[i]);
+    // }
+    // for (auto it : freq)
+    // {
+    //     uni.push_back(it);
+    // }
+
+    // Approach : Using two pointers
+    vector<int> uni;
+    int i = 0, j = 0;
+    while (i < n && j < m)
     {
-        freq.insert(a1[i]);
+        if (a1[i] < a2[j])
+        {
+            uni.push_back(a1[i]);
+            i++;
+        }
+        else if (a1[i] > a2[j])
+        {
+            uni.push_back(a2[j]);
+            j++;
+        }
+        else
+        {
+            uni.push_back(a1[i]);
+            i++;
+            j++;
+        }
     }
-    for (int i = 0; i < m; i++)
+
+    while (i < n)
     {
-        freq.insert(a2[i]);
+        uni.push_back(a1[i]);
+        i++;
     }
-    for (auto it : freq)
+    while (j < m)
     {
-        uni.push_back(it);
+        uni.push_back(a2[j]);
+        j++;
     }
 
     return uni;
