@@ -45,14 +45,31 @@ int missingNum(vector<int> arr)
 
     // Approach : using sum formula
 
-    int sum = 0;
+    // int sum = 0;
+    // for (int i = 0; i < n - 1; i++)
+    // {
+    //     sum += arr[i];
+    // }
+
+    // int sum_exp = (n * (n + 1)) / 2;
+    // return sum_exp - sum;
+
+    // Approach : using XOR
+
+    int xor1 = 0;
+    int xor2 = 0;
+
     for (int i = 0; i < n - 1; i++)
     {
-        sum += arr[i];
+        xor2 ^= arr[i];
     }
 
-    int sum_exp = (n * (n + 1)) / 2;
-    return sum_exp - sum;
+    for (int i = 1; i <= n; i++)
+    {
+        xor1 ^= i;
+    }
+
+    return xor1 ^ xor2;
 }
 
 int main()
