@@ -7,16 +7,28 @@ int singleNum(vector<int> &arr)
 {
     int n = arr.size();
     // Approach 1 : using linear search
+    // for (int i = 0; i < n; i++)
+    // {
+    //     int c = 0;
+    //     for (int j = 0; j < n; j++)
+    //     {
+    //         if (arr[i] == arr[j])
+    //             c++;
+    //     }
+    //     if (c == 1)
+    //         return arr[i];
+    // }
+
+    // Approach 2 : using hashing
+    unordered_map<int, int> mp;
     for (int i = 0; i < n; i++)
     {
-        int c = 0;
-        for (int j = 0; j < n; j++)
-        {
-            if (arr[i] == arr[j])
-                c++;
-        }
-        if (c == 1)
-            return arr[i];
+        mp[arr[i]]++;
+    }
+    for (auto it : mp)
+    {
+        if (it.second == 1)
+            return it.first;
     }
 }
 
