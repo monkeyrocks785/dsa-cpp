@@ -20,16 +20,24 @@ int singleNum(vector<int> &arr)
     // }
 
     // Approach 2 : using hashing
-    unordered_map<int, int> mp;
+    // unordered_map<int, int> mp;
+    // for (int i = 0; i < n; i++)
+    // {
+    //     mp[arr[i]]++;
+    // }
+    // for (auto it : mp)
+    // {
+    //     if (it.second == 1)
+    //         return it.first;
+    // }
+
+    // Approach 3 : using XOR
+    int xorRes = 0;
     for (int i = 0; i < n; i++)
     {
-        mp[arr[i]]++;
+        xorRes ^= arr[i];
     }
-    for (auto it : mp)
-    {
-        if (it.second == 1)
-            return it.first;
-    }
+    return xorRes;
 }
 
 int main()
