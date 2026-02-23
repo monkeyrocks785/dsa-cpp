@@ -9,22 +9,42 @@ int longestSubarr(vector<int> &nums, int k)
     int mx = 0;
 
     // Approach 1: Brute Force
-    for (int si = 0; si < n; si++)
+    // for (int si = 0; si < n; si++)
+    // {
+    //     for (int ei = si; ei < n; ei++)
+    //     {
+    //         int s = 0;
+    //         for (int i = si; i <= ei; i++)
+    //         {
+    //             s += nums[i];
+    //         }
+    //         if (s == k)
+    //         {
+    //             mx = max(mx, ei - si + 1);
+    //         }
+    //     }
+    // }
+
+    // Aproach 2: Two-pointers
+    int l = 0, r = 0, s = nums[0];
+    while (r < n)
     {
-        for (int ei = si; ei < n; ei++)
+        while (l <= r && s > k)
         {
-            int s = 0;
-            for (int i = si; i <= ei; i++)
-            {
-                s += nums[i];
-            }
-            if (s == k)
-            {
-                mx = max(mx, ei - si + 1);
-            }
+            s -= nums[l];
+            l++;
+        }
+        if (s == k)
+        {
+            mx = max(mx, r - l + 1);
+        }
+        r++;
+        if (r < n)
+        {
+            s += nums[r];
         }
     }
-    
+
     return mx;
 }
 
