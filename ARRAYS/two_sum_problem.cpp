@@ -5,32 +5,64 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// Approach 1: Brute Force
+// string solve1(vector<int> &a, int t, int n)
+// {
+//     for (int i = 0; i < n; i++)
+//     {
+//         for (int j = i + 1; j < n; j++)
+//         {
+//             if (a[i] + a[j] == t)
+//             {
+//                 return "YES";
+//             }
+//         }
+//     }
+//     return "NO";
+// }
+
+// vector<int> solve2(vector<int> &a, int t, int n)
+// {
+//     for (int i = 0; i < n; i++)
+//     {
+//         for (int j = i + 1; j < n; j++)
+//         {
+//             if (a[i] + a[j] == t)
+//             {
+//                 return {i, j};
+//             }
+//         }
+//     }
+//     return {-1, -1};
+// }
+
+// Approach 2: Using Hashing
 string solve1(vector<int> &a, int t, int n)
 {
+    unordered_map<int, int> mp;
     for (int i = 0; i < n; i++)
     {
-        for (int j = i + 1; j < n; j++)
+        int comp = t - a[i];
+        if (mp.find(comp) != mp.end())
         {
-            if (a[i] + a[j] == t)
-            {
-                return "YES";
-            }
+            return "YES";
         }
+        mp[a[i]] = i;
     }
     return "NO";
 }
 
 vector<int> solve2(vector<int> &a, int t, int n)
 {
+    unordered_map<int, int> mp;
     for (int i = 0; i < n; i++)
     {
-        for (int j = i + 1; j < n; j++)
+        int comp = t - a[i];
+        if (mp.find(comp) != mp.end())
         {
-            if (a[i] + a[j] == t)
-            {
-                return {i, j};
-            }
+            return {mp[comp], i};
         }
+        mp[a[i]] = i;
     }
     return {-1, -1};
 }
