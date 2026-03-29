@@ -37,32 +37,91 @@ using namespace std;
 // }
 
 // Approach 2: Using Hashing
+// string solve1(vector<int> &a, int t, int n)
+// {
+//     unordered_map<int, int> mp;
+//     for (int i = 0; i < n; i++)
+//     {
+//         int comp = t - a[i];
+//         if (mp.find(comp) != mp.end())
+//         {
+//             return "YES";
+//         }
+//         mp[a[i]] = i;
+//     }
+//     return "NO";
+// }
+
+// vector<int> solve2(vector<int> &a, int t, int n)
+// {
+//     unordered_map<int, int> mp;
+//     for (int i = 0; i < n; i++)
+//     {
+//         int comp = t - a[i];
+//         if (mp.find(comp) != mp.end())
+//         {
+//             return {mp[comp], i};
+//         }
+//         mp[a[i]] = i;
+//     }
+//     return {-1, -1};
+// }
+
+// Approach 3: Greedy Approach (Sorting + Two Pointers)
 string solve1(vector<int> &a, int t, int n)
 {
-    unordered_map<int, int> mp;
+    vector<pair<int, int>> vp;
     for (int i = 0; i < n; i++)
     {
-        int comp = t - a[i];
-        if (mp.find(comp) != mp.end())
+        vp.push_back({a[i], i});
+    }
+    sort(vp.begin(), vp.end());
+
+    int l = 0, r = n - 1;
+    while (l < r)
+    {
+        int s = vp[l].first + vp[r].first;
+        if (s == t)
         {
             return "YES";
         }
-        mp[a[i]] = i;
+        else if (s < t)
+        {
+            l++;
+        }
+        else
+        {
+            r--;
+        }
     }
     return "NO";
 }
 
 vector<int> solve2(vector<int> &a, int t, int n)
 {
-    unordered_map<int, int> mp;
+    vector<pair<int, int>> vp;
     for (int i = 0; i < n; i++)
     {
-        int comp = t - a[i];
-        if (mp.find(comp) != mp.end())
+        vp.push_back({a[i], i});
+    }
+    sort(vp.begin(), vp.end());
+
+    int l = 0, r = n - 1;
+    while (l < r)
+    {
+        int s = vp[l].first + vp[r].first;
+        if (s == t)
         {
-            return {mp[comp], i};
+            return {vp[l].second, vp[r].second};
         }
-        mp[a[i]] = i;
+        else if (s < t)
+        {
+            l++;
+        }
+        else
+        {
+            r--;
+        }
     }
     return {-1, -1};
 }
