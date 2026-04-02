@@ -6,27 +6,42 @@ using namespace std;
 
 int maxSubArray(vector<int> &nums)
 {
-    int maxS = INT_MIN;
-    int sum = 0;
 
     // Approach : Brute Force
+    // int maxS = INT_MIN;
     // for (int i = 0; i < nums.size(); i++)
     // {
     //     for (int j = i; j < nums.size(); j++)
     //     {
-    //         sum += nums[j];
+    //         int sum = 0;
+    //         for (int k = i; k <= j; k++)
+    //         {
+    //             sum += nums[k];
+    //         }
+    //         maxS = max(maxS, sum);
     //     }
-    //     maxS = max(maxS, sum);
     // }
 
     // Approach : Better
+    // int maxS = INT_MIN;
+    // for (int i = 0; i < nums.size(); i++)
+    // {
+    //     int sum = 0;
+    //     for (int j = i; j < nums.size(); j++)
+    //     {
+    //         sum += nums[j];
+    //         maxS = max(maxS, sum);
+    //     }
+    // }
+
+    // Approach : Optimal (Kadane's Algorithm)
+    long long maxS = INT_MIN, sum = 0;
     for (int i = 0; i < nums.size(); i++)
     {
-        for (int j = i; j < nums.size(); j++)
-        {
-            sum += nums[j];
-            maxS = max(maxS, sum);
-        }
+        sum += nums[i];
+        maxS = max(maxS, sum);
+        if (sum < 0)
+            sum = 0;
     }
 
     return maxS;
@@ -34,7 +49,7 @@ int maxSubArray(vector<int> &nums)
 
 int main()
 {
-    vector<int> arr = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+    vector<int> arr = {2, 3, -7, 4, 7, -4};
     int maxSum = maxSubArray(arr);
     cout << "The maximum subarray sum is: " << maxSum << endl;
 
