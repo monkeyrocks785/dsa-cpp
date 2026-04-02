@@ -15,8 +15,8 @@ int maxSubArray(vector<int> &nums)
         for (int j = i; j < nums.size(); j++)
         {
             sum += nums[j];
-            maxS = max(maxS, sum);
         }
+        maxS = max(maxS, sum);
     }
 
     return maxS;
