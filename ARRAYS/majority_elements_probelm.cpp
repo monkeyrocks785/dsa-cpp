@@ -7,19 +7,33 @@ using namespace std;
 int majorityElement(vector<int> &nums)
 {
     // Approach : Brute Force
+    // for (int x : nums)
+    // {
+    //     int count = 0;
+    //     for (int y : nums)
+    //     {
+    //         if (x == y)
+    //         {
+    //             count++;
+    //         }
+    //     }
+    //     if (count > nums.size() / 2)
+    //     {
+    //         return x;
+    //     }
+    // }
+
+    // Approach : Hash Map
+    unordered_map<int, int> freq;
     for (int x : nums)
     {
-        int count = 0;
-        for (int y : nums)
+        freq[x]++;
+    }
+    for (auto it : freq)
+    {
+        if (it.second > nums.size() / 2)
         {
-            if (x == y)
-            {
-                count++;
-            }
-        }
-        if (count > nums.size() / 2)
-        {
-            return x;
+            return it.first;
         }
     }
 }
