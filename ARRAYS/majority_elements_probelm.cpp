@@ -24,18 +24,39 @@ int majorityElement(vector<int> &nums)
     // }
 
     // Approach : Hash Map
-    unordered_map<int, int> freq;
+    // unordered_map<int, int> freq;
+    // for (int x : nums)
+    // {
+    //     freq[x]++;
+    // }
+    // for (auto it : freq)
+    // {
+    //     if (it.second > nums.size() / 2)
+    //     {
+    //         return it.first;
+    //     }
+    // }
+
+    // Approach : Boyer-Moore Voting Algorithm
+    int count = 0;
+    int element = -1;
     for (int x : nums)
     {
-        freq[x]++;
-    }
-    for (auto it : freq)
-    {
-        if (it.second > nums.size() / 2)
+        if (count == 0)
         {
-            return it.first;
+            element = x;
+        }
+        if (x == element)
+        {
+            count++;
+        }
+        else
+        {
+            count--;
         }
     }
+
+    return element;
 }
 
 int main()
