@@ -6,6 +6,31 @@ using namespace std;
 void sortZeroOneTwo(vector<int> &nums)
 {
     // Approach : BruteForce
+    // int count0 = 0, count1 = 0, count2 = 0;
+    // for (int x : nums)
+    // {
+    //     if (x == 0)
+    //         count0++;
+    //     else if (x == 1)
+    //         count1++;
+    //     else
+    //         count2++;
+    // }
+    // int idx = 0;
+    // while (count0--)
+    // {
+    //     nums[idx++] = 0;
+    // }
+    // while (count1--)
+    // {
+    //     nums[idx++] = 1;
+    // }
+    // while (count2--)
+    // {
+    //     nums[idx++] = 2;
+    // }
+
+    // Approach : Optimal
     int count0 = 0, count1 = 0, count2 = 0;
     for (int x : nums)
     {
@@ -16,18 +41,18 @@ void sortZeroOneTwo(vector<int> &nums)
         else
             count2++;
     }
-    int idx = 0;
-    while (count0--)
+
+    for (int i = 0; i < count0; i++)
     {
-        nums[idx++] = 0;
+        nums[i] = 0;
     }
-    while (count1--)
+    for (int i = count0; i < count0 + count1; i++)
     {
-        nums[idx++] = 1;
+        nums[i] = 1;
     }
-    while (count2--)
+    for (int i = count0 + count1; i < count0 + count1 + count2; i++)
     {
-        nums[idx++] = 2;
+        nums[i] = 2;
     }
 }
 
@@ -39,6 +64,6 @@ int main()
     {
         cout << x << " ";
     }
-    
+
     return 0;
 }
