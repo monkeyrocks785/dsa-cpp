@@ -6,20 +6,23 @@ using namespace std;
 
 int maxSubArray(vector<int> &nums)
 {
-    // Approach : Brute Force
     int max = LONG_MIN;
-    for (int i = 0; i < nums.size(); i++)
-    {
-        int sum = 0;
-        for (int j = i; j < nums.size(); j++)
-        {
-            sum += nums[j];
-            if (sum > max)
-            {
-                max = sum;
-            }
-        }
-    }
+    
+    // Approach : Brute Force
+    // for (int i = 0; i < nums.size(); i++)
+    // {
+    //     int sum = 0;
+    //     for (int j = i; j < nums.size(); j++)
+    //     {
+    //         sum += nums[j];
+    //         if (sum > max)
+    //         {
+    //             max = sum;
+    //         }
+    //     }
+    // }
+
+
 
     return max;
 }
