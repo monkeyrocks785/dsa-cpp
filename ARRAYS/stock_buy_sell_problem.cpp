@@ -7,17 +7,26 @@ int stockBuySell(vector<int> &prices)
 {
     int maxProfit = 0;
     // Approach : Brute Force
+    // for (int i = 0; i < prices.size(); i++)
+    // {
+    //     for (int j = 0; j < prices.size(); j++)
+    //     {
+    //         if (j > i)
+    //         {
+    //             int profit = prices[j] - prices[i];
+    //             maxProfit = max(maxProfit, profit);
+    //         }
+    //     }
+    // }
+
+    // Approach : Optimal
+    int minPrice = INT_MAX;
     for (int i = 0; i < prices.size(); i++)
     {
-        for (int j = 0; j < prices.size(); j++)
-        {
-            if (j > i)
-            {
-                int profit = prices[j] - prices[i];
-                maxProfit = max(maxProfit, profit);
-            }
-        }
+        minPrice = min(minPrice, prices[i]);
+        maxProfit = max(maxProfit, prices[i] - minPrice);
     }
+
     return maxProfit;
 }
 
